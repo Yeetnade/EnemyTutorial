@@ -25,6 +25,9 @@ public class EnemyAI : MonoBehaviour
     public float basicAttackRange;
     public float coolDownTime = 2f;
     [HideInInspector] public bool playerInBasicAttackRange;
+
+    [Header("Attack")]
+    [HideInInspector] public bool alreadyAttacked;
     // Start is called before the first frame update
     void Awake()
     {
@@ -47,7 +50,9 @@ public class EnemyAI : MonoBehaviour
 
         if (playerInBasicAttackRange)
         {
+            animator.SetBool("walk", false);
             agent.speed = 0;
+            BasicAttack();
         }
 
         if (canRotate == true)
@@ -61,9 +66,31 @@ public class EnemyAI : MonoBehaviour
 
     private void Chase()
     {
+        animator.SetBool("walk", true);
         agent.SetDestination(player.position);
     }
 
+    private void BasicAttack()
+    {
+        if (!alreadyAttacked)
+        {
+            StartCoroutine(basicAttackAnim());
+        }
+    }
+
+    IEnumerator basicAttackAnim()
+    {
+        alreadyAttacked = true;
+        animator.SetBool("attack", true);
+        yield return new WaitForSeconds(1.5f);
+        animator.SetBool("attack", false);
+        Invoke(nameof(ResetBasicAttack), coolDownTime);
+    }
+
+    private void ResetBasicAttack()
+    {
+        alreadyAttacked = false;
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

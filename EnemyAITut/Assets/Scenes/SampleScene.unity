@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -745,9 +745,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 1.64
   m_Speed: 6
-  m_Acceleration: 8
+  m_Acceleration: 10000
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 5000
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -801,9 +801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6d0451695c0774ba8890a975e38396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointSet: 0
-  walkPointRange: 0
   player: {fileID: 1141435686}
   whatIsGround:
     serializedVersion: 2
@@ -816,8 +813,6 @@ MonoBehaviour:
   basicAttackRange: 3
   coolDownTime: 2
   playerInBasicAttackRange: 0
-  alreadyAttacked: 0
-  isAttacking: 0
 --- !u!4 &961291144740357598
 Transform:
   m_ObjectHideFlags: 0
