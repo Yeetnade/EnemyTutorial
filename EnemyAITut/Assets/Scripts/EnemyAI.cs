@@ -25,8 +25,6 @@ public class EnemyAI : MonoBehaviour
     public float basicAttackRange;
     public float coolDownTime = 2f;
     [HideInInspector] public bool playerInBasicAttackRange;
-
-    [Header("Attack")]
     [HideInInspector] public bool alreadyAttacked;
     // Start is called before the first frame update
     void Awake()
